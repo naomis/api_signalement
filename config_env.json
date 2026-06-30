@@ -1,0 +1,18 @@
+{
+  "db": {
+    "dbname": "DB_NAME",
+    "user": "DB_USER",
+    "password": "DB_PASSWORD",
+    "host": "DB_HOST",
+    "port": 5432
+  },
+  "api_url": "https://plateforme-bal.adresse.data.gouv.fr/api-signalement",
+  "api_key": "API_TOKEN",
+  "target_table": "signalement_ban",
+  "pending_status": "PENDING",
+  "ignored_status": "IGNORED",
+  "processed_by": "Nom de la collectivite",
+  "codes_insee": [],
+  "codes_insee_sql": "SELECT code_insee FROM signalement_ban",
+  "limit": 100
+}
