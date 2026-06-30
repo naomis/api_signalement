@@ -365,7 +365,7 @@ def push():
     db = PostgresDB(**DB_PARAMS)
     # Récupérer tous les signalements à mettre à jour (status != PENDING), avec leur type, sauf ceux déjà traités
     db.cur.execute(
-        """
+        f"""
         SELECT id, status, rejection_reason, type FROM {target_table}
         WHERE status != %s AND (processed_by IS NULL OR processed_by != %s);
         """,
