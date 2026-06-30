@@ -78,6 +78,37 @@ Le script lit un fichier JSON:
 - variable d'environnement: `API_SIGNALEMENT_CONFIG`
 - fichier par defaut: `config_env.json`
 
+### Variable d'environnement selon le shell
+
+Windows CMD (session courante):
+
+```bat
+set API_SIGNALEMENT_CONFIG=config_env.json
+```
+
+Windows PowerShell (session courante):
+
+```powershell
+$env:API_SIGNALEMENT_CONFIG = "config_env.json"
+```
+
+Linux / macOS (session courante):
+
+```bash
+export API_SIGNALEMENT_CONFIG=config_env.json
+```
+
+Execution ponctuelle sans changer la session:
+
+```bash
+API_SIGNALEMENT_CONFIG=config_env_prod.json python main.py collecte
+```
+
+Erreur frequente (Windows):
+- en PowerShell, la commande `set API_SIGNALEMENT_CONFIG=...` ne fonctionne pas comme en CMD.
+- utiliser `$env:API_SIGNALEMENT_CONFIG = "config_env.json"`.
+- symptome typique en cas d'erreur: le script semble ignorer votre fichier cible et tente de lire le fichier par defaut.
+
 Un template est fourni dans `config_env.json`.
 
 Exemple:
@@ -120,7 +151,7 @@ python main.py push
 Avec un autre fichier de config:
 
 ```bash
-set API_SIGNALEMENT_CONFIG=config_env_prod.json
+$env:API_SIGNALEMENT_CONFIG = "config_env_prod.json"
 python main.py collecte
 python main.py push
 ```
